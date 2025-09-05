@@ -17,6 +17,7 @@
   "scripts": {
     "dev": "ladle serve",
     "build:ladle": "ladle build",
+    "preview": "ladle preview",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "coverage": "vitest --coverage",
