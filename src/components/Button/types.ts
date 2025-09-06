@@ -1,7 +1,11 @@
-import type { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithRef, ReactElement } from "react";
+import button from "./variants";
+import { VariantProps } from "tailwind-variants";
+import { LucideIcon } from "lucide-react";
 
-export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
+export interface ButtonProps
+  extends ComponentPropsWithRef<"button">,
+    VariantProps<typeof button> {
   loading?: boolean;
-  startIcon?: string;
-  endIcon?: string;
+  icon?: ReactElement<LucideIcon>;
 }

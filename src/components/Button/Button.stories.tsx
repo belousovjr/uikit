@@ -1,10 +1,64 @@
 import type { Story, StoryDefault } from "@ladle/react";
 
 import { Button } from "./Button";
+import { CheckIcon, SettingsIcon } from "lucide-react";
+import { ButtonProps } from "./types";
+import { useState } from "react";
 
 export default {
   title: "Components/Button",
 } satisfies StoryDefault;
 
-export const Primary: Story = () => <Button>Primary Button</Button>;
-export const Disabled: Story = () => <Button disabled>Disabled</Button>;
+function ButtonSizesView({
+  ...props
+}: Omit<ButtonProps, "size" | "disabled" | "loading" | "onClick">) {
+  const [isLoading, setIsLoading] = useState(false);
+
+  return (
+    <div>
+      <p className="capitalize mb-4">{props.variant ?? "primary"}</p>
+
+      <div className="flex flex-wrap gap-4 items-center">
+        <Button {...props} size="sm">
+          Small
+        </Button>
+        <Button {...props} size="md">
+          Medium
+        </Button>
+        <Button {...props} size="lg">
+          Large
+        </Button>
+        <Button {...props} size="sm" icon={<CheckIcon />}>
+          With Icon
+        </Button>
+        <Button {...props} size="sm" icon={<SettingsIcon />} />
+        <Button disabled {...props} size="sm">
+          Disabled
+        </Button>
+        <Button
+          onClick={() => {
+            setIsLoading(true);
+            setTimeout(() => {
+              setIsLoading(false);
+            }, 1000);
+          }}
+          loading={isLoading}
+          {...props}
+          size="sm"
+        >
+          Loading By Click
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+export const Primary: Story = () => <ButtonSizesView variant="primary" />;
+export const Secondary: Story = () => <ButtonSizesView variant="secondary" />;
+export const White: Story = () => <ButtonSizesView variant="white" />;
+export const Destructive: Story = () => (
+  <ButtonSizesView variant="destructive" />
+);
+export const DestructiveSecondary: Story = () => (
+  <ButtonSizesView variant="destructiveSecondary" />
+);

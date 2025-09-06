@@ -5,4 +5,4 @@ export const Provider: GlobalProvider = ({
   children,
   //   globalState,
   //   storyMeta,
-}) => children;
+}) => <div className="bg-white p-2">{children}</div>;
