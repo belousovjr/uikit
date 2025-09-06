@@ -18,7 +18,7 @@ export function Textfield({
   }, [multiline, propsRaw]);
 
   return (
-    <div className="inline-block h-min">
+    <div className="h-min">
       {label && <div className="text-sm/5 text-general-80 mb-1">{label}</div>}
       <span className="relative flex items-center">
         {createElement(tag, {

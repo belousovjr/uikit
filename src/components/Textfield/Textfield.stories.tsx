@@ -7,7 +7,7 @@ export default {
   title: "Components/Textfield",
 } satisfies StoryDefault;
 
-export const Primary: Story = () => (
+export const Regular: Story = () => (
   <div className="grid items-end grid-cols-1 lg:grid-cols-2 gap-4">
     <Textfield size="sm" defaultValue="Small" />
     <Textfield size="md" defaultValue="Medium" />

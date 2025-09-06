@@ -59,3 +59,9 @@
   --color-yellow-90: #FFC700;
   --color-yellow-100: #F99600;
 }
+
+@layer base  {
+  :root { 
+    color: var(--color-general-100);
+  }
+}
