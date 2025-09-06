@@ -24,7 +24,6 @@ test("no calls onClick callback when disabled button is clicked", () => {
     </Button>
   );
   const buttonElement = screen.getByText("Click");
-  expect(buttonElement).toBeInTheDocument();
   fireEvent.click(buttonElement);
   expect(handleClick).toHaveBeenCalledTimes(0);
 });
@@ -37,7 +36,6 @@ test("no calls onClick callback when loading button is clicked", () => {
     </Button>
   );
   const buttonElement = screen.getByText("Click");
-  expect(buttonElement).toBeInTheDocument();
   fireEvent.click(buttonElement);
   expect(handleClick).toHaveBeenCalledTimes(0);
 });

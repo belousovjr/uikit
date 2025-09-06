@@ -9,7 +9,7 @@ const button = tv({
       secondary:
         "text-primary-100 bg-primary-40 hover:bg-primary-30 active:bg-primary-40 focus:bg-primary-40",
       white:
-        "border-1 -border-offset-1 border-general-50 text-primary-100 bg-white hover:bg-primary-30 active:bg-white focus:bg-white",
+        "border-1 border-general-50 text-primary-100 bg-white hover:bg-primary-30 active:bg-white focus:bg-white",
       destructive:
         "text-white bg-red-100 hover:bg-red-80 active:bg-red-90 focus:bg-red-100",
       destructiveSecondary:

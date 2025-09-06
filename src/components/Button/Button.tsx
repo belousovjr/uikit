@@ -18,14 +18,14 @@ export function Button({
       className={button({
         variant,
         size,
-        class: className,
+        loading,
         iconState:
           children && icon
             ? "iconAndContent"
             : children
             ? "noIcon"
             : "onlyIcon",
-        loading,
+        className,
       })}
       {...props}
     >

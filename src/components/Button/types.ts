@@ -5,7 +5,7 @@ import { LucideIcon } from "lucide-react";
 
 export interface ButtonProps
   extends ComponentPropsWithRef<"button">,
-    VariantProps<typeof button> {
+    Omit<VariantProps<typeof button>, "iconState" | "loading"> {
   loading?: boolean;
   icon?: ReactElement<LucideIcon>;
 }
