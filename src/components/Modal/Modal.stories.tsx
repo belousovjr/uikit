@@ -91,7 +91,7 @@ export const Regular: Story = () => {
         }}
       >
         <p className="text-xl font-bold mb-5">Modal Title</p>
-        {Array.from({ length: 20 }).map((_, i) => (
+        {Array.from({ length: 50 }).map((_, i) => (
           <p key={i} className="text-base">
             Some Content Some Content Some Content Some Content Some Content
           </p>
