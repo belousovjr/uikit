@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, ReactElement } from "react";
+import type { ComponentPropsWithRef, ReactElement, ReactNode } from "react";
 import textfield from "./variants";
 import { VariantProps } from "tailwind-variants";
 import { LucideIcon } from "lucide-react";
@@ -7,7 +7,7 @@ type InitialTextfieldProps = Omit<
   VariantProps<typeof textfield>,
   "leftIcon" | "rightIcon"
 > & {
-  label?: string;
+  label?: ReactNode;
 };
 
 export type InputProps = {
@@ -16,13 +16,13 @@ export type InputProps = {
   rightIcon?: ReactElement<LucideIcon>;
 } & Omit<
   ComponentPropsWithRef<"input">,
-  "size" | "checked" | "defaultChecked" | "type"
+  "size" | "checked" | "defaultChecked" | "type" | "children"
 > &
   InitialTextfieldProps;
 
 export type TextareaProps = {
   multiline: true;
-} & Omit<ComponentPropsWithRef<"textarea">, "defaultChecked"> &
+} & Omit<ComponentPropsWithRef<"textarea">, "defaultChecked" | "children"> &
   InitialTextfieldProps;
 
 export type TextfieldProps = InputProps | TextareaProps;

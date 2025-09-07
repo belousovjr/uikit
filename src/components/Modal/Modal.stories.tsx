@@ -61,9 +61,9 @@ export const Regular: Story = () => {
             onClick={() => {
               setIsOpen(false);
             }}
-            variant="destructiveSecondary"
+            variant="white"
             size="sm"
-            className="border-none"
+            className="border-none text-red-100"
           >
             Cancel
           </Button>
@@ -82,7 +82,11 @@ export const Regular: Story = () => {
       >
         <p className="text-xl font-bold text-center">Modal Title</p>
         <p className="text-base text-center mb-5">Modal content goes here</p>
-        <Textfield placeholder="Placeholder" className="w-full" />
+        <Textfield
+          placeholder="Placeholder"
+          className="w-full"
+          label={<span className="text-white">Label</span>}
+        />
       </Modal>
       <Modal
         isOpen={isOverflowingOpen}

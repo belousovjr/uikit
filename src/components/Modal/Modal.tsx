@@ -1,6 +1,6 @@
 import { createPortal } from "react-dom";
 import type { ModalProps } from "./types";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { XIcon } from "lucide-react";
 import modal from "./variants";
 
@@ -14,6 +14,14 @@ export function Modal({
   const [isMounted, setIsMounted] = useState(false);
   const [isLocOpen, setIsLocOpen] = useState(isOpen);
   const closeAnimInterval = useRef<NodeJS.Timeout>(null);
+
+  const { base, wrapper } = useMemo(
+    () =>
+      modal({
+        open: isOpen === isLocOpen,
+      }),
+    [isLocOpen, isOpen]
+  );
 
   const clearAnimInterval = useCallback(() => {
     if (closeAnimInterval.current !== null) {
@@ -46,15 +54,15 @@ export function Modal({
     (isLocOpen || isOpen) &&
     createPortal(
       <div
-        data-open={isOpen === isLocOpen}
+        role="dialog"
         onClick={() => {
           onClose?.();
         }}
-        className="group/modal fixed flex justify-center left-0 top-0 w-full h-dvh bg-black/10 z-auto overflow-y-auto transition-opacity duration-200 opacity-0 data-[open=true]:opacity-100"
+        className={wrapper()}
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className={modal({
+          className={base({
             className,
           })}
         >

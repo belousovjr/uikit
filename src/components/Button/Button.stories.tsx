@@ -32,6 +32,9 @@ function ButtonSizesView({
       <Button disabled {...props}>
         Disabled
       </Button>
+      <Button {...props} disabled className="border-1 border-primary-100">
+        Custom Border
+      </Button>
       <Button
         onClick={() => {
           setIsLoading(true);
