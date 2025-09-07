@@ -11,7 +11,6 @@ test("calls onClick callback when button is clicked", () => {
   const handleClick = vi.fn();
   render(<Button onClick={handleClick}>Click</Button>);
   const buttonElement = screen.getByText("Click");
-  expect(buttonElement).toBeInTheDocument();
   fireEvent.click(buttonElement);
   expect(handleClick).toHaveBeenCalledTimes(1);
 });
