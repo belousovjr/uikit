@@ -1,8 +1,8 @@
 import type { ComponentPropsWithRef } from "react";
-import toggle from "./variants";
+import checkbox from "./variants";
 import { VariantProps } from "tailwind-variants";
 
-export interface ToggleProps
+export interface CheckboxProps
   extends Omit<
       ComponentPropsWithRef<"input">,
       | "type"
@@ -13,7 +13,7 @@ export interface ToggleProps
       | "defaultChecked"
       | "onChange"
     >,
-    VariantProps<typeof toggle> {
-  active?: boolean;
+    VariantProps<typeof checkbox> {
+  checked?: boolean;
   onChange?: (value: boolean) => unknown;
 }

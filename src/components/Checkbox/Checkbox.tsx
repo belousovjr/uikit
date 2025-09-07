@@ -1,26 +1,21 @@
 import { useMemo, useRef } from "react";
-import type { ToggleProps } from "./types";
-import toggle from "./variants";
+import type { CheckboxProps } from "./types";
+import checkbox from "./variants";
+import { CheckIcon } from "lucide-react";
 
-export function Toggle({
+export function Checkbox({
   className,
-  active,
-  size,
+  checked,
   children,
   onChange,
   ...props
-}: ToggleProps) {
+}: CheckboxProps) {
   const inputRef = useRef<HTMLInputElement>(null);
-  const { base, circle } = useMemo(
-    () =>
-      toggle({
-        size,
-      }),
-    [size]
-  );
+
+  const { base, check } = useMemo(() => checkbox(), []);
 
   return (
-    <label className="group/toggle-wrap flex items-center gap-3 select-none">
+    <label className="group/checkbox-wrap flex items-center gap-3 select-none">
       <div
         tabIndex={!props.disabled ? 0 : -1}
         onKeyDown={(e) => {
@@ -42,12 +37,12 @@ export function Toggle({
           type="checkbox"
           tabIndex={-1}
           className="hidden"
-          checked={active}
+          checked={checked}
           ref={inputRef}
           {...props}
         />
 
-        <span className={circle()} />
+        <CheckIcon className={check()} size={12} strokeWidth={4} />
       </div>
       {children && <span>{children}</span>}
     </label>
