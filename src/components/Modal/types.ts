@@ -5,7 +5,7 @@ import { LucideIcon } from "lucide-react";
 
 export interface ModalProps
   extends ComponentPropsWithRef<"div">,
-    VariantProps<typeof modal> {
+    Omit<VariantProps<typeof modal>, "open"> {
   children?: ReactNode;
   onClose?: () => unknown;
   isOpen: boolean;

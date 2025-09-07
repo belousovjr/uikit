@@ -1,6 +1,7 @@
 import { LoaderIcon } from "lucide-react";
 import type { ButtonProps } from "./types";
 import button from "./variants";
+import { useMemo } from "react";
 
 export function Button({
   loading,
@@ -12,29 +13,27 @@ export function Button({
   children,
   ...props
 }: ButtonProps) {
-  return (
-    <button
-      disabled={disabled || loading}
-      className={button({
+  const { base, loadingPanel } = useMemo(
+    () =>
+      button({
         variant,
         size,
         loading,
-        iconState:
-          children && icon
-            ? "iconAndContent"
-            : children
-            ? "noIcon"
-            : "onlyIcon",
-        className,
-      })}
+        icon: !!icon,
+        content: !!children,
+      }),
+    [children, icon, loading, size, variant]
+  );
+
+  return (
+    <button
+      disabled={disabled || loading}
+      className={base({ className })}
       {...props}
     >
       {icon}
       {children}
-      <span
-        data-loading={loading}
-        className="absolute flex items-center justify-center top-0 left-0 w-full h-full bg-inherit transition-opacity opacity-0 data-[loading=true]:opacity-100 pointer-events-none"
-      >
+      <span className={loadingPanel()}>
         <LoaderIcon className="animate-spin" />
       </span>
     </button>

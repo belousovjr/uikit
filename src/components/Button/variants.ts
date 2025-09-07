@@ -1,51 +1,68 @@
 import { tv } from "tailwind-variants";
 
 const button = tv({
-  base: "relative flex items-center gap-x-1 rounded-sm transition font-normal cursor-pointer overflow-hidden disabled:cursor-default",
+  slots: {
+    base: "relative flex items-center gap-x-1 rounded-sm transition font-normal cursor-pointer overflow-hidden disabled:cursor-default",
+    loadingPanel:
+      "absolute flex items-center justify-center top-0 left-0 w-full h-full bg-inherit transition-opacity opacity-0 pointer-events-none",
+  },
   variants: {
     variant: {
-      primary:
-        "text-white bg-primary-100 hover:bg-primary-80 active:bg-primary-90 focus:bg-primary-100",
-      secondary:
-        "text-primary-100 bg-primary-40 hover:bg-primary-30 active:bg-primary-40 focus:bg-primary-40",
-      white:
-        "border-1 border-general-50 text-primary-100 bg-white hover:bg-primary-30 active:bg-white focus:bg-white",
-      destructive:
-        "text-white bg-red-100 hover:bg-red-80 active:bg-red-90 focus:bg-red-100",
-      destructiveSecondary:
-        "text-red-100 bg-red-30 hover:bg-red-40 active:bg-red-30 focus:bg-red-30",
+      primary: {
+        base: "text-white bg-primary-100 hover:bg-primary-80 active:bg-primary-90 focus:bg-primary-100",
+      },
+      secondary: {
+        base: "text-primary-100 bg-primary-40 hover:bg-primary-30 active:bg-primary-40 focus:bg-primary-40",
+      },
+      white: {
+        base: "border-1 border-general-50 text-primary-100 bg-white hover:bg-primary-30 active:bg-white focus:bg-white",
+      },
+      destructive: {
+        base: "text-white bg-red-100 hover:bg-red-80 active:bg-red-90 focus:bg-red-100",
+      },
+      destructiveSecondary: {
+        base: "text-red-100 bg-red-30 hover:bg-red-40 active:bg-red-30 focus:bg-red-30",
+      },
     },
     size: {
-      sm: "min-h-9 min-w-9 text-sm",
-      md: "min-h-10 min-w-10 text-base",
-      lg: "min-h-12 min-w-12 text-base",
+      sm: { base: "min-h-9 min-w-9 text-sm" },
+      md: { base: "min-h-10 min-w-10 text-base" },
+      lg: { base: "min-h-12 min-w-12 text-base" },
     },
-    iconState: {
-      noIcon: "",
-      iconAndContent: "",
-      onlyIcon: "",
+    icon: {
+      true: "",
+    },
+    content: {
+      true: "",
     },
     loading: {
-      false: "disabled:bg-general-50  disabled:text-white ",
+      false: { base: "disabled:bg-general-50  disabled:text-white" },
+      true: {
+        loadingPanel: "opacity-100",
+      },
     },
   },
   compoundVariants: [
-    { iconState: "noIcon", size: "sm", class: "px-5" },
-    { iconState: "iconAndContent", size: "sm", class: "px-4" },
-    { iconState: "onlyIcon", size: "sm", class: "px-1.5" },
+    { icon: false, content: true, size: "sm", class: "px-5" },
+    { icon: true, content: true, size: "sm", class: "px-4" },
+    {
+      icon: true,
+      content: false,
+      size: "sm",
+      class: "px-1.5",
+    },
 
-    { iconState: "noIcon", size: "md", class: "px-6" },
-    { iconState: "iconAndContent", size: "md", class: "px-5" },
-    { iconState: "onlyIcon", size: "md", class: "px-2" },
+    { icon: false, content: true, size: "md", class: "px-6" },
+    { icon: true, content: true, size: "md", class: "px-5" },
+    { icon: true, content: false, size: "md", class: "px-2" },
 
-    { iconState: "noIcon", size: "lg", class: "px-6" },
-    { iconState: "iconAndContent", size: "lg", class: "px-5" },
-    { iconState: "onlyIcon", size: "lg", class: "px-3" },
+    { icon: false, content: true, size: "lg", class: "px-6" },
+    { icon: true, content: true, size: "lg", class: "px-5" },
+    { icon: true, content: false, size: "lg", class: "px-3" },
   ],
   defaultVariants: {
     variant: "primary",
     size: "md",
-    iconState: "noIcon",
   },
 });
 
