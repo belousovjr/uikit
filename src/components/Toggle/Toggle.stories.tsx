@@ -25,7 +25,7 @@ function ToggleView() {
       <Toggle
         active={isActive}
         onChange={setIsActive}
-        className="bg-red-50 hover:bg-red-60 has-checked:bg-green-60 text-primary-100"
+        className="bg-red-50 group-has-hover/toggle-wrap:bg-red-60 has-checked:bg-green-60 text-primary-100"
       >
         <span className="text-red-100">Custom Colors</span>
       </Toggle>
