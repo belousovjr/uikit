@@ -26,7 +26,7 @@ npm install @belousovjr/uikit@latest
 
 **2 Importing components**:
 
-  ```ts
+  ```tsx
    import { Button } from "@belousovjr/uikit";
 
    <Button variant="secondary">
