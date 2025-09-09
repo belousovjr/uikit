@@ -26,7 +26,8 @@ function SelectView() {
         options={options}
         value={value}
         onChange={setValue}
-        label="Middle"
+        label="Medium"
+        size="md"
       />
       <Select
         options={options}
