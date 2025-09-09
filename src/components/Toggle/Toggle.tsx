@@ -6,6 +6,7 @@ export function Toggle({
   className,
   active,
   size,
+  circleElement,
   children,
   onChange,
   ...props
@@ -47,7 +48,11 @@ export function Toggle({
           {...props}
         />
 
-        <span className={circle()} />
+        <span className={circle()}>
+          {circleElement ?? (
+            <span className="bg-current w-full h-full rounded-full" />
+          )}
+        </span>
       </div>
       {children && <span>{children}</span>}
     </label>

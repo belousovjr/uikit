@@ -48,3 +48,8 @@ test("tab moves focus between toggles", async () => {
   await user.tab({ shift: true });
   expect(firstToggle).toHaveFocus();
 });
+
+test("renders custom toggle circle", () => {
+  render(<Toggle circleElement="C">Click</Toggle>);
+  expect(screen.getByText("C")).toBeInTheDocument();
+});
