@@ -4,6 +4,7 @@ import { Modal } from "./Modal";
 import { Button } from "../Button/Button";
 import { useState } from "react";
 import { Textfield } from "../Textfield/Textfield";
+import { XIcon } from "lucide-react";
 
 export default {
   title: "Components/Modal",
@@ -44,13 +45,7 @@ export const Regular: Story = () => {
       >
         Open Empty Modal
       </Button>
-      <Modal
-        isOpen={isOpen}
-        onClose={() => {
-          setIsOpen(false);
-        }}
-        className="w-[540px]"
-      >
+      <Modal isOpen={isOpen} className="w-[540px]">
         <div className="grid gap-5 mb-10">
           <p className="text-xl font-bold">Modal Title</p>
           <p className="text-base">Modal content goes here</p>
@@ -73,17 +68,17 @@ export const Regular: Story = () => {
       </Modal>
       <Modal
         isOpen={isCustomOpen}
+        className="bg-primary-100 text-white w-[540px]"
         onClose={() => {
           setIsCustomOpen(false);
         }}
-        className="bg-primary-100 text-white w-[540px]"
-        closeIcon={null}
+        closeIcon={<XIcon className="text-white" />}
       >
         <p className="text-xl font-bold text-center">Modal Title</p>
         <p className="text-base text-center mb-5">Modal content goes here</p>
         <Textfield
           placeholder="Placeholder"
-          className="w-full"
+          className="w-full mb-5"
           label={<span className="text-white">Label</span>}
         />
       </Modal>
