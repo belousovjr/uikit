@@ -19,6 +19,8 @@ export function ColorPicker({
   useEffect(() => {
     if (finValue) {
       wrapRef.current!.style.background = finValue;
+    } else {
+      wrapRef.current!.style.background = finValue || "#000";
     }
   }, [finValue]);
 
@@ -47,8 +49,8 @@ export function ColorPicker({
           onChange={(e) => {
             if (onChange) {
               onChange?.(e.target.value);
-            } else if (typeof finValue === "undefined") {
-              wrapRef.current!.style.background = e.target.value;
+            } else if (!finValue) {
+              wrapRef.current!.style.background = e.target.value || "#000";
             }
           }}
           className="absolute invisible h-0 w-full left-0 -bottom-1"
