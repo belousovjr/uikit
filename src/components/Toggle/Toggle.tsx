@@ -30,7 +30,7 @@ export function Toggle({
             e.code === "Space"
           ) {
             e.preventDefault();
-            inputRef.current!.checked = !inputRef.current!.checked;
+            inputRef.current!.click();
           }
         }}
         className={base({ className })}
