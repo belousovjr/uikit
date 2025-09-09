@@ -1,10 +1,10 @@
-import type { ComponentPropsWithRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 import checkbox from "./variants";
 import { VariantProps } from "tailwind-variants";
 
 export interface CheckboxProps
   extends Omit<
-      ComponentPropsWithRef<"input">,
+      ComponentPropsWithoutRef<"input">,
       | "type"
       | "size"
       | "value"
