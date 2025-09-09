@@ -9,5 +9,5 @@ export interface ModalProps
   children?: ReactNode;
   onClose?: () => unknown;
   isOpen: boolean;
-  closeIcon?: ReactElement<LucideIcon>;
+  closeIcon?: ReactElement<LucideIcon> | null;
 }

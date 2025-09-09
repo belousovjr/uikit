@@ -2,7 +2,7 @@ import { tv } from "tailwind-variants";
 
 const button = tv({
   slots: {
-    base: "relative flex items-center gap-x-1 rounded-sm transition font-normal cursor-pointer overflow-hidden disabled:cursor-default",
+    base: "relative flex items-center justify-center gap-x-1 rounded-sm transition font-normal cursor-pointer overflow-hidden disabled:cursor-default",
     loadingPanel:
       "absolute flex items-center justify-center top-0 left-0 w-full h-full bg-inherit transition-opacity opacity-0 pointer-events-none",
   },

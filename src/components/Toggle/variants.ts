@@ -4,7 +4,7 @@ const checkbox = tv({
   slots: {
     base: "group/checkbox relative flex items-center rounded-2xl transition cursor-pointer bg-primary-40 text-white has-checked:bg-primary-100 group-hover/toggle-wrap:bg-primary-60 has-disabled:bg-general-50 has-disabled:cursor-default",
     circle:
-      "absolute bg-current h-[calc(100%-theme(spacing.2))] rounded-full aspect-square text-base transition-[left] left-1",
+      "absolute flex h-[calc(100%-theme(spacing.2))] rounded-full aspect-square text-base transition-[left] left-1",
   },
   variants: {
     size: {
