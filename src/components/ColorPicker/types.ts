@@ -1,10 +1,10 @@
-import type { ComponentPropsWithRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 import colorPicker from "./variants";
 import { VariantProps } from "tailwind-variants";
 
 export interface ColorPickerProps
   extends Omit<
-      ComponentPropsWithRef<"input">,
+      ComponentPropsWithoutRef<"input">,
       | "onChange"
       | "size"
       | "type"

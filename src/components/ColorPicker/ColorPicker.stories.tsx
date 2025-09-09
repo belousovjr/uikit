@@ -10,7 +10,9 @@ function ColorPickerView() {
   const [value, setValue] = useState<string>("");
   return (
     <div className="flex flex-wrap gap-8">
+      <ColorPicker value={value} onChange={setValue} size="sm" />
       <ColorPicker value={value} onChange={setValue} />
+      <ColorPicker value={value} onChange={setValue} size="lg" />
     </div>
   );
 }

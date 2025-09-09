@@ -1,10 +1,10 @@
-import type { ComponentPropsWithRef, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import toggle from "./variants";
 import { VariantProps } from "tailwind-variants";
 
 export interface ToggleProps
   extends Omit<
-      ComponentPropsWithRef<"input">,
+      ComponentPropsWithoutRef<"input">,
       | "type"
       | "size"
       | "value"
