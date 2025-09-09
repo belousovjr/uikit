@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 import toggle from "./variants";
 import { VariantProps } from "tailwind-variants";
 
@@ -16,4 +16,5 @@ export interface ToggleProps
     VariantProps<typeof toggle> {
   active?: boolean;
   onChange?: (value: boolean) => unknown;
+  circleElement?: ReactNode;
 }
