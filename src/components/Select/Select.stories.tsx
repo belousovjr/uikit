@@ -14,7 +14,7 @@ const options = [
 function SelectView() {
   const [value, setValue] = useState(options[0].value);
   return (
-    <div className="grid gap-8 grid-cols-2">
+    <div className="flex flex-wrap gap-4">
       <Select
         options={options}
         value={value}
@@ -35,14 +35,21 @@ function SelectView() {
         onChange={setValue}
         label="Large"
         size="lg"
+        className="min-w-20"
       />
-      <Select options={options} defaultValue={"b"} onChange={setValue} />
+      <Select
+        label="With Default"
+        options={options}
+        defaultValue={"b"}
+        onChange={setValue}
+      />
       <Select
         options={options}
         value={value}
         onChange={setValue}
         label="Disabled"
         disabled
+        className="flex-1"
       />
     </div>
   );
