@@ -1,7 +1,7 @@
 import type { Story, StoryDefault } from "@ladle/react";
 
 import { Button } from "./Button";
-import { CheckIcon, SettingsIcon } from "lucide-react";
+import { CheckIcon, PlusIcon, SettingsIcon } from "lucide-react";
 import { ButtonProps } from "./types";
 import { useState } from "react";
 
@@ -47,6 +47,10 @@ function ButtonSizesView({
         size="sm"
       >
         Loading By Click
+      </Button>
+      <br />
+      <Button className="w-full" icon={<PlusIcon />}>
+        Full Width
       </Button>
     </div>
   );

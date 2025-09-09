@@ -3,7 +3,6 @@ import type { Story, StoryDefault } from "@ladle/react";
 import { Modal } from "./Modal";
 import { Button } from "../Button/Button";
 import { useState } from "react";
-import { XIcon } from "lucide-react";
 import { Textfield } from "../Textfield/Textfield";
 
 export default {
