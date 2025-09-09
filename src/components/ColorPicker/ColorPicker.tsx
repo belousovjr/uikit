@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import type { ColorPickerProps } from "./types";
 import colorPicker from "./variants";
 
@@ -9,10 +9,25 @@ export function ColorPicker({
   ...props
 }: ColorPickerProps) {
   const inputRef = useRef<HTMLInputElement>(null);
+  const wrapRef = useRef<HTMLDivElement>(null);
+
+  const finValue = useMemo(
+    () => props.value ?? props.defaultValue,
+    [props.value, props.defaultValue]
+  );
+
+  useEffect(() => {
+    if (finValue) {
+      wrapRef.current!.style.background = finValue;
+    } else {
+      wrapRef.current!.style.background = finValue || "#000";
+    }
+  }, [finValue]);
 
   return (
-    <label>
+    <label className="h-min relative">
       <div
+        ref={wrapRef}
         tabIndex={0}
         className={colorPicker({
           className,
@@ -27,14 +42,18 @@ export function ColorPicker({
             inputRef.current!.click();
           }
         }}
-        style={{ background: props.value || props.defaultValue || "#000" }}
       >
         <input
+          ref={inputRef}
           tabIndex={-1}
           onChange={(e) => {
-            onChange?.(e.target.value);
+            if (onChange) {
+              onChange?.(e.target.value);
+            } else if (!finValue) {
+              wrapRef.current!.style.background = e.target.value || "#000";
+            }
           }}
-          className="invisible h-full w-full"
+          className="absolute invisible h-0 w-full left-0 -bottom-1"
           type="color"
           {...props}
         />

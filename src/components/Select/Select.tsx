@@ -10,15 +10,15 @@ export function Select<T extends string>({
   onChange,
   ...props
 }: SelectProps<T>) {
-  const { base, opt } = useMemo(() => select({ size }), [size]);
+  const { base, opt, wrap } = useMemo(() => select({ size }), [size]);
   return (
-    <div className="h-min">
+    <div className={wrap({ className })}>
       {label && <div className="text-sm/5 text-general-80 mb-1">{label}</div>}
       <select
         onChange={(e) => {
           onChange?.(e.target.value as T);
         }}
-        className={base({ className })}
+        className={base()}
         {...props}
       >
         {options?.map((option) => (
