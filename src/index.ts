@@ -4,3 +4,4 @@ export * from "./components/Modal/Modal";
 export * from "./components/Notification/Notification";
 export * from "./components/Toggle/Toggle";
 export * from "./components/Checkbox/Checkbox";
+export * from "./components/Loader/Loader";
