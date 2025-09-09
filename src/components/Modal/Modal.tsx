@@ -66,16 +66,18 @@ export function Modal({
             className,
           })}
         >
-          <button
-            onClick={() => {
-              onClose?.();
-            }}
-            title="Close Modal"
-            type="button"
-            className="absolute top-3 right-3 cursor-pointer text-general-70"
-          >
-            {closeIcon !== null ? closeIcon ?? <XIcon /> : null}
-          </button>
+          {onClose && (
+            <button
+              onClick={() => {
+                onClose?.();
+              }}
+              title="Close Modal"
+              type="button"
+              className="absolute top-3 right-3 cursor-pointer text-general-70"
+            >
+              {closeIcon ?? <XIcon />}
+            </button>
+          )}
           {children}
         </div>
       </div>,
