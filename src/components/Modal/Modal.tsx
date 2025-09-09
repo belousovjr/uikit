@@ -74,7 +74,7 @@ export function Modal({
             type="button"
             className="absolute top-3 right-3 cursor-pointer text-general-70"
           >
-            {closeIcon ?? <XIcon />}
+            {closeIcon !== null ? closeIcon ?? <XIcon /> : null}
           </button>
           {children}
         </div>

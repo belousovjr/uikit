@@ -78,7 +78,7 @@ export const Regular: Story = () => {
           setIsCustomOpen(false);
         }}
         className="bg-primary-100 text-white w-[540px]"
-        closeIcon={<XIcon className="text-white" />}
+        closeIcon={null}
       >
         <p className="text-xl font-bold text-center">Modal Title</p>
         <p className="text-base text-center mb-5">Modal content goes here</p>
