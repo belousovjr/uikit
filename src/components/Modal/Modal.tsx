@@ -76,7 +76,7 @@ export function Modal({
           >
             {closeIcon ?? <XIcon />}
           </button>
-          <div>{children}</div>
+          {children}
         </div>
       </div>,
       document.body
