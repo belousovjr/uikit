@@ -1,7 +1,11 @@
-import type { ComponentPropsWithRef, ReactElement, ReactNode } from "react";
+import type {
+  ComponentPropsWithRef,
+  ReactElement,
+  ReactNode,
+  SVGProps,
+} from "react";
 import textfield from "./variants";
 import { VariantProps } from "tailwind-variants";
-import { LucideIcon } from "lucide-react";
 
 type InitialTextfieldProps = Omit<
   VariantProps<typeof textfield>,
@@ -12,8 +16,8 @@ type InitialTextfieldProps = Omit<
 
 export type InputProps = {
   multiline?: false;
-  leftIcon?: ReactElement<LucideIcon>;
-  rightIcon?: ReactElement<LucideIcon>;
+  leftIcon?: ReactElement<ReactElement<SVGProps<SVGSVGElement>, "svg">>;
+  rightIcon?: ReactElement<ReactElement<SVGProps<SVGSVGElement>, "svg">>;
 } & Omit<
   ComponentPropsWithRef<"input">,
   "size" | "checked" | "defaultChecked" | "type" | "children"

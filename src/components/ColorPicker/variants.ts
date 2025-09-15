@@ -1,7 +1,7 @@
 import { tv } from "tailwind-variants";
 
 const colorPicker = tv({
-  base: "border-1 border-general-80 rounded-md cursor-pointer",
+  base: "border-1 border-general-80 rounded-md cursor-pointer has-disabled:cursor-default",
   variants: {
     size: {
       sm: "w-9 h-9",

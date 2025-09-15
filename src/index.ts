@@ -7,3 +7,4 @@ export * from "./components/Checkbox/Checkbox";
 export * from "./components/Loader/Loader";
 export * from "./components/Select/Select";
 export * from "./components/ColorPicker/ColorPicker";
+export * from "./components/Tooltip/Tooltip";

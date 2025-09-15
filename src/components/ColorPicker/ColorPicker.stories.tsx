@@ -7,7 +7,7 @@ export default {
 } satisfies StoryDefault;
 
 function ColorPickerView() {
-  const [value, setValue] = useState<string>("");
+  const [value, setValue] = useState<string>("#ff0044");
   return (
     <div className="flex text-center flex-wrap gap-8">
       <div className="flex gap-4 items-center">
@@ -25,10 +25,14 @@ function ColorPickerView() {
       <div className="flex gap-4 items-center">
         Fixed
         <ColorPicker value={value} />
-      </div>{" "}
+      </div>
       <div className="flex gap-4 items-center">
         Free
         <ColorPicker />
+      </div>
+      <div className="flex gap-4 items-center">
+        Disabled
+        <ColorPicker disabled value={value} onChange={setValue} />
       </div>
     </div>
   );
