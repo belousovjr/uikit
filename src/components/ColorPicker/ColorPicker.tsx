@@ -28,7 +28,7 @@ export function ColorPicker({
     <label className="h-min relative">
       <div
         ref={wrapRef}
-        tabIndex={0}
+        tabIndex={!props.disabled ? 0 : -1}
         className={colorPicker({
           className,
           size,
@@ -53,7 +53,7 @@ export function ColorPicker({
               wrapRef.current!.style.background = e.target.value || "#000";
             }
           }}
-          className="absolute invisible h-0 w-full left-0 -bottom-1"
+          className="absolute opacity-0 left-0 top-0 w-full h-full"
           type="color"
           {...props}
         />
