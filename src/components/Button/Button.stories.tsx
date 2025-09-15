@@ -49,7 +49,7 @@ function ButtonSizesView({
         Loading By Click
       </Button>
       <br />
-      <Button className="w-full" icon={<PlusIcon />}>
+      <Button className="w-full" {...props} icon={<PlusIcon />}>
         Full Width
       </Button>
     </div>

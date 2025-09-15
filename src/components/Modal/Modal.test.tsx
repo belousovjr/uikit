@@ -19,7 +19,7 @@ function ModalTestWrapper() {
 }
 
 test("renders opened modal", () => {
-  render(<Modal isOpen={true}>Modal</Modal>);
+  render(<Modal isOpen>Modal</Modal>);
   expect(screen.getByText("Modal")).toBeInTheDocument();
 });
 
@@ -32,7 +32,7 @@ test("no renders closed modal", () => {
 test("calls onClose callback when close button is clicked", () => {
   const handleClose = vi.fn();
   render(
-    <Modal isOpen={true} onClose={handleClose}>
+    <Modal isOpen onClose={handleClose}>
       Click
     </Modal>
   );
@@ -55,7 +55,7 @@ test("renders custom close icon", () => {
   const handleClose = vi.fn();
   render(
     <Modal
-      isOpen={true}
+      isOpen
       onClose={handleClose}
       closeIcon={<TrashIcon className="text-black" />}
     >
