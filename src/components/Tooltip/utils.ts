@@ -20,10 +20,15 @@ export function calcTooltipPosition(
 
   const positions = new Set([
     defaultPosition || tooltipPositions[0],
-    ...tooltipPositions,
-  ]);
+    "bottom",
+  ] as TooltipPos[]);
 
-  let newPosData: TooltipPosData | undefined;
+  const posesData: {
+    [K in TooltipPos]?: {
+      data: TooltipPosData;
+      isInscribed: boolean;
+    };
+  } = {};
 
   for (const pos of positions) {
     const isHor = pos === "right" || pos === "left";
@@ -67,41 +72,46 @@ export function calcTooltipPosition(
     const isInscribed =
       boxWidth >= contentRect.width && boxHeight >= contentRect.height;
 
-    if (typeof newPosData === "undefined" || isInscribed) {
-      const box = {
-        left: pos === "right" ? minBoxLeft : minBoxRight - contentRect.width,
-        top: pos === "bottom" ? minBoxTop : minBoxBottom - contentRect.height,
-      };
-      newPosData = {
-        box,
-        arrow: {
-          left:
-            pos === "left"
-              ? wrapRect.left - arrowLegHalf - arrowDist
-              : pos === "right"
-              ? wrapRect.right - arrowLegHalf + arrowDist
-              : wrapCenter.x - arrowLegHalf,
-          top:
-            pos === "bottom"
-              ? wrapRect.bottom - arrowLegHalf + arrowDist
-              : pos === "top"
-              ? wrapRect.top - arrowLegHalf - arrowDist
-              : wrapCenter.y - arrowLegHalf,
-        },
-      };
-      if (isHor) {
-        newPosData.box.top -=
-          (minBoxBottom - minBoxTop - contentRect.height) / 2;
-      } else {
-        newPosData.box.left -=
-          (minBoxRight - minBoxLeft - contentRect.width) / 2;
-      }
-      if (isInscribed) {
-        break;
-      }
+    const box = {
+      left: pos === "right" ? minBoxLeft : minBoxRight - contentRect.width,
+      top: pos === "bottom" ? minBoxTop : minBoxBottom - contentRect.height,
+    };
+    const newPosData = {
+      box,
+      arrow: {
+        left:
+          pos === "left"
+            ? wrapRect.left - arrowLegHalf - arrowDist
+            : pos === "right"
+            ? wrapRect.right - arrowLegHalf + arrowDist
+            : wrapCenter.x - arrowLegHalf,
+        top:
+          pos === "bottom"
+            ? wrapRect.bottom - arrowLegHalf + arrowDist
+            : pos === "top"
+            ? wrapRect.top - arrowLegHalf - arrowDist
+            : wrapCenter.y - arrowLegHalf,
+      },
+    };
+    if (isHor) {
+      newPosData.box.top -= (minBoxBottom - minBoxTop - contentRect.height) / 2;
+    } else {
+      newPosData.box.left -= (minBoxRight - minBoxLeft - contentRect.width) / 2;
+    }
+    posesData[pos] = {
+      data: newPosData,
+      isInscribed,
+    };
+    if (isInscribed && defaultPosition === pos) {
+      break;
     }
   }
-  return newPosData!;
+
+  if (defaultPosition && posesData[defaultPosition]?.isInscribed) {
+    return posesData[defaultPosition].data;
+  }
+
+  return posesData.bottom!.data;
 }
 
 export function getScrollableParents(el: Element) {

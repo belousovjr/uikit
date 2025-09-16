@@ -9,27 +9,7 @@ export default {
 
 export const Regular: Story = () => {
   return (
-    <div className="relative min-h-dvh py-14">
-      <div className="absolute left-0 top-0">
-        <Tooltip content="Some Content">
-          <Button variant="white">Tooltip</Button>
-        </Tooltip>
-      </div>
-      <div className="absolute right-0 top-0">
-        <Tooltip content="Some Content">
-          <Button variant="white">Tooltip</Button>
-        </Tooltip>
-      </div>
-      <div className="absolute left-0 bottom-0">
-        <Tooltip content="Some Content">
-          <Button variant="white">Tooltip</Button>
-        </Tooltip>
-      </div>
-      <div className="absolute right-0 bottom-0">
-        <Tooltip content="Some Content">
-          <Button variant="white">Tooltip</Button>
-        </Tooltip>
-      </div>
+    <div className="relative min-h-dvh py-10">
       <div className="absolute flex flex-wrap gap-5 left-1/2 top-1/2 -translate-1/2">
         <Tooltip defaultPosition="left" content="Some Content">
           <Button variant="white">Left</Button>
@@ -43,24 +23,6 @@ export const Regular: Story = () => {
         <Tooltip defaultPosition="bottom" content="Some Content">
           <Button variant="white">Bottom</Button>
         </Tooltip>
-        <Tooltip
-          defaultPosition="left"
-          content={
-            <div className="whitespace-pre-line break-all">
-              <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
-              <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
-              <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
-              <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
-              <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
-              <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
-              <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
-              <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
-            </div>
-          }
-        >
-          <Button variant="white">Large</Button>
-        </Tooltip>
-
         <Tooltip arrowDistance={9} content="Some Content">
           <Button
             variant="white"
@@ -89,6 +51,26 @@ export const Regular: Story = () => {
         >
           <Button>Always Opened</Button>
         </Tooltip>
+
+        <div className="flex min-w-full justify-end mt-10">
+          <Tooltip
+            defaultPosition="left"
+            content={
+              <div className="whitespace-pre-line break-all">
+                <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
+                <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
+                <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
+                <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
+                <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
+                <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
+                <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
+                <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
+              </div>
+            }
+          >
+            <Button variant="white">Large</Button>
+          </Tooltip>
+        </div>
       </div>
     </div>
   );
