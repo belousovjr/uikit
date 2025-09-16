@@ -24,7 +24,6 @@ export function Tooltip({
 }: TooltipProps) {
   const [isMounted, setIsMounted] = useState(false);
   const [isLocOpen, setIsLocOpen] = useState(!!isOpen);
-  const [, startTransition] = useTransition();
   const [, startHoverTransition] = useTransition();
 
   const wrapRef = useRef<HTMLSpanElement>(null);
@@ -80,15 +79,25 @@ export function Tooltip({
         left: `${position.arrow.left}px`,
         top: `${position.arrow.top}px`,
       });
+      return position;
     }
   }, [borderRadius, defaultPosition, offsetsData, outerOffset]);
 
   useLayoutEffect(() => {
     if (isMounted) {
+      let animFrame: number | undefined;
+      let lastPosJSON = "";
       const viewChangeHandler = () => {
-        startTransition(actualizePosition);
+        const newPosData = actualizePosition();
+        const newPosJSON = JSON.stringify(newPosData);
+        if (newPosJSON !== lastPosJSON) {
+          animFrame = requestAnimationFrame(() => {
+            viewChangeHandler();
+          });
+        }
+        lastPosJSON = newPosJSON;
       };
-      actualizePosition();
+      viewChangeHandler();
 
       window.addEventListener("resize", viewChangeHandler);
       for (const el of scrollableParents) {
@@ -96,6 +105,7 @@ export function Tooltip({
       }
 
       return () => {
+        cancelAnimationFrame(animFrame!);
         window.removeEventListener("resize", viewChangeHandler);
         for (const el of scrollableParents) {
           el.removeEventListener("scroll", viewChangeHandler);

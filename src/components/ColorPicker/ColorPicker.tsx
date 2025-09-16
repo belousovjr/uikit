@@ -53,7 +53,7 @@ export function ColorPicker({
               wrapRef.current!.style.background = e.target.value || "#000";
             }
           }}
-          className="absolute opacity-0 left-0 top-0 w-full h-full"
+          className="absolute opacity-0 pointer-events-none left-0 top-0 w-full h-full"
           type="color"
           {...props}
         />
