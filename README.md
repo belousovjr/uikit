@@ -38,4 +38,4 @@ npm install @belousovjr/uikit@latest
 
 * [GitHub](https://github.com/belousovjr/uikit)
 * [Figma](https://www.figma.com/design/1KJJXeA9bMIWAUtiXgIxSy)
-* [Ladle View](https://uikit-peach.vercel.app)
+* [Ladle View](https://uikit.belousovjr.me/)
